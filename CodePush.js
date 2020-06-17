@@ -208,6 +208,7 @@ async function tryReportStatus(statusReport, resumeListener) {
     NativeCodePush.recordStatusReported(statusReport);
     resumeListener && AppState.removeEventListener("change", resumeListener);
   } catch (e) {
+    console.error(e);
     log(`Report status failed: ${JSON.stringify(statusReport)}`);
     NativeCodePush.saveStatusReportForRetry(statusReport);
     // Try again when the app resumes
